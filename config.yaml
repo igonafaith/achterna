@@ -1,0 +1,54 @@
+server:
+  addr: ":8080"
+  read_timeout: 30s
+  write_timeout: 60s
+  idle_timeout: 120s
+  shutdown_timeout: 15s
+
+admin:
+  addr: "127.0.0.1:9090"
+
+origin:
+  url: "https://origin.example.com"
+  host_header: "origin.example.com"
+  timeout: 15s
+  max_idle_conns: 100
+  idle_conn_timeout: 90s
+
+cache:
+  enabled: true
+  max_size_mb: 256
+  default_ttl: 5m
+  cacheable_extensions:
+    - .css
+    - .js
+    - .png
+    - .jpg
+    - .jpeg
+    - .gif
+    - .svg
+    - .woff
+    - .woff2
+    - .ico
+  bypass_methods:
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+
+circuit_breaker:
+  failure_threshold: 5
+  success_threshold: 3
+  timeout: 30s
+  counted_status_codes:
+    - 502
+    - 503
+    - 504
+
+rate_limit:
+  requests_per_second: 200
+  burst: 50
+
+logging:
+  level: "info"
+  format: "json"
