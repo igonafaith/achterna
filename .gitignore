@@ -1,0 +1,24 @@
+# Build output
+bin/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test / coverage
+*.out
+coverage.html
+
+# Local config overrides (keep config.yaml as example)
+config.local.yaml
+
+# Temporary
+*.tmp
+*.log
