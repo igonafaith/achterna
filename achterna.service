@@ -1,0 +1,28 @@
+[Unit]
+Description=achterna — Go Reverse Proxy
+After=network.target
+Documentation=https://github.com/igonafaith/achterna
+
+[Service]
+Type=simple
+User=achterna
+Group=achterna
+WorkingDirectory=/opt/achterna
+ExecStart=/opt/achterna/achterna -config /opt/achterna/config.yaml
+Restart=always
+RestartSec=3s
+WatchdogSec=30s
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/achterna
+PrivateTmp=true
+
+# Limits — tune based on expected concurrency
+LimitNOFILE=65536
+LimitNPROC=4096
+
+[Install]
+WantedBy=multi-user.target
